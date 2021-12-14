@@ -19,11 +19,19 @@
 
 package main
 
-import "github.com/caddyserver/caddy/caddy/caddymain"
+import (
+	"fmt"
+	"runtime"
+
+	"github.com/caddyserver/caddy/caddy/caddymain"
+)
 
 var run = caddymain.Run // replaced for tests
 
 func main() {
+	fmt.Println("Caddy Version v1.0.6")
+	fmt.Printf("Running on %s/%s, runtime version %s\n", runtime.GOOS, runtime.GOARCH, runtime.Version())
+	fmt.Println("")
 	caddymain.EnableTelemetry = false
 	run()
 }
